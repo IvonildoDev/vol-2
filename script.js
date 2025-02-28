@@ -1,3 +1,8 @@
+// Add this at the beginning of your script.js file
+document.querySelector('.hamburger').addEventListener('click', function () {
+    document.querySelector('.nav-menu').classList.toggle('active');
+});
+
 function calcular() {
     const distancia = parseFloat(document.getElementById('distancia').value);
     const opcao = document.getElementById('opcao').value;
@@ -49,3 +54,11 @@ function calcular() {
     document.getElementById('distancia').value = '';
     document.getElementById('opcao').value = '';
 }
+
+document.getElementById('btnLimparHistorico').addEventListener('click', function () {
+    // Limpar o histórico
+    document.getElementById('historico').innerHTML = '';
+
+    // Limpar o resultado
+    document.getElementById('resultado').innerHTML = '';
+});

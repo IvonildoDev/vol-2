@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Calculadora de Volume de Óleo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="nav-menu">
+        <button class="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+            <li><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1><i class="fas fa-envelope"></i> Contato</h1>
+        <div class="contact-form">
+            <form>
+                <div class="input-group">
+                    <label for="nome"><i class="fas fa-user"></i> Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email"><i class="fas fa-envelope"></i> E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="mensagem"><i class="fas fa-comment"></i> Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-calcular">
+                    <i class="fas fa-paper-plane"></i> Enviar
+                </button>
+            </form>
+        </div>
+        <p class="footer-text">Desenvolvido por Ivonildo Lima</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

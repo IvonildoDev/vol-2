@@ -7,24 +7,29 @@
     <title>Calculadora de Volume de Óleo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .footer-text {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
+
 </head>
 
 <body>
+    <nav class="nav-menu">
+        <button class="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul>
+            <li><a href="./index.html"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="./sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+            <li><a href="./contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+        </ul>
+    </nav>
     <div class="container">
         <div class="calculator-section">
             <h1><i class="fas fa-calculator"></i> Calculadora de Volume</h1>
 
             <div class="input-group">
                 <label for="distancia">
-                    <i class="fas fa-ruler"></i> Distância (Metros):
+                    <i class="fas fa-ruler"></i> Distância ou Profundidade (Metros):
                 </label>
-                <input type="number" id="distancia" placeholder="Digite a distância" step="0.01" min="0">
+                <input type="number" id="distancia" placeholder="Digite a distância " step="0.01" min="0">
             </div>
 
             <div class="input-group">
@@ -51,10 +56,10 @@
             <div class="result-section" id="resultado"></div>
         </div>
 
-        <div class="history-section">
+        <!-- <div class="history-section">
             <h2><i class="fas fa-history"></i> Histórico</h2>
             <ul id="historico"></ul>
-        </div>
+        </div> -->
 
         <p class="footer-text">Desenvolvido por Ivonildo Lima</p>
     </div>
