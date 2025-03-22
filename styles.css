@@ -136,6 +136,9 @@ button:hover {
     background: #333;
     padding: 1rem;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .nav-menu ul {
@@ -229,4 +232,191 @@ textarea {
 textarea:focus {
     outline: none;
     border-color: var(--primary-color);
+}
+
+.logo-container {
+    background-color: var(--primary-color);
+    padding: 10px 0;
+    text-align: center;
+}
+
+.logo-image {
+    max-height: 60px;
+    max-width: 200px;
+}
+
+/* Estilos aprimorados para a logo */
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px;
+    border-radius: var(--border-radius);
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.logo i {
+    font-size: 32px;
+    color: #ff9d00;
+    filter: drop-shadow(0 0 2px rgba(255, 157, 0, 0.5));
+    animation: pulse 2s infinite;
+}
+
+.logo span {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #fff, #f0f0f0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    position: relative;
+}
+
+.logo span::after {
+    content: 'CalcVol';
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(90deg, #ff9d00, #ffcc00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.5s ease;
+}
+
+.logo:hover span::after {
+    width: 100%;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Ajuste para o responsivo */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-wrap: wrap;
+    }
+    
+    .hamburger {
+        order: 3;
+    }
+    
+    .logo {
+        flex-grow: 1;
+    }
+    
+    .nav-menu ul {
+        width: 100%;
+        order: 3;
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .nav-menu.active ul {
+        display: flex;
+    }
+}
+
+/* Estilo para o footer melhorado */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0;
+    margin-top: 40px;
+    border-top: 4px solid var(--primary-color);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.footer-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+}
+
+.footer-section p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    color: #aaa;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
 }
