@@ -4,118 +4,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - Calculadora de Volume</title>
+    <title>Sobre Nós | CalcVol</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <div class="bg-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+    </div>
+
     <nav class="nav-menu">
-        <div class="logo">
+        <a href="./index.html" class="logo">
             <i class="fas fa-oil-well"></i>
             <span>CalcVol</span>
-        </div>
+        </a>
         <button class="hamburger">
             <i class="fas fa-bars"></i>
         </button>
         <ul>
             <li><a href="./index.html"><i class="fas fa-home"></i> Início</a></li>
-            <li><a href="./sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+            <li><a href="./sobre.html" class="active"><i class="fas fa-info-circle"></i> Sobre</a></li>
             <li><a href="./contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
         </ul>
     </nav>
-    <div class="container">
-        <h1><i class="fas fa-info-circle"></i> Sobre o Sistema</h1>
-        <div class="about-content">
-            <h2>Calculadora de Volume de Preenchimento de tubo com água</h2>
-            <h3>Finalidade do Sistema</h3>
+
+    <main class="container glass">
+        <section class="about-content">
+            <h1><i class="fas fa-info-circle"></i> Sobre o Sistema</h1>
+
+            <h2>Calculadora de Volume de Preenchimento</h2>
             <p>Este sistema foi desenvolvido para auxiliar profissionais da indústria petrolífera no cálculo do
                 volume de água em diferentes tipos de tubulações. A calculadora permite determinar o volume tanto em
                 litros quanto em barris (BBL), considerando diferentes diâmetros de tubos comumente utilizados na
-                indústria. vale lembrar que os dados fornecidos partindo do suposto que atubulação esta vazia então
-                e preciso observar que valores podem ser um pouco diferente </p>
-            <h3>Funcionalidades Principais</h3>
-            <ul>
-                <li>Cálculo de volume para três tipos diferentes de tubulações:
-                    <ul>
-                        <li>Tubo 2 3/8" </li>
-                        <li>Tubo 2 7/8"</li>
-                        <li>Tubo 3 1/2"</li>
-                    </ul>
-                </li>
-                <li>Conversão automática entre litros e barris de petróleo (BBL)</li>
-                <li>Histórico de cálculos realizados</li>
-                <li>Interface responsiva para uso em dispositivos móveis</li>
-            </ul>
+                indústria.</p>
 
-            <h3>Tecnologias Utilizadas</h3>
-            <ul>
-                <li><i class="fab fa-html5"></i> HTML5
-                    <p>Estruturação da interface e formulários</p>
-                </li>
-                <li><i class="fab fa-css3-alt"></i> CSS3
-                    <p>Estilização, layouts responsivos e animações</p>
-                </li>
-                <li><i class="fab fa-js"></i> JavaScript
-                    <p>Lógica de cálculos e interatividade</p>
-                </li>
-                <li><i class="fab fa-font-awesome"></i> Font Awesome
-                    <p>Ícones e elementos visuais</p>
-                </li>
-            </ul>
+            <blockquote>
+                <i class="fas fa-exclamation-triangle"></i> Observação: Os dados partem do pressuposto que a tubulação
+                está vazia. Valores reais podem sofrer variações.
+            </blockquote>
 
-            <h3>Como Utilizar</h3>
-            <ol>
-                <li>Insira a distância em metros da tubulação</li>
-                <li>Selecione o diâmetro do tubo apropriado</li>
-                <li>Clique em "Calcular" para obter o resultado</li>
-                <li>O sistema mostrará o volume em litros e barris (BBL)</li>
-            </ol>
+            <div style="margin-top: 40px;">
+                <h3><i class="fas fa-star"></i> Funcionalidades Principais</h3>
+                <ul>
+                    <li>Cálculo de volume para tubulações de 2 3/8", 2 7/8" e 3 1/2".</li>
+                    <li>Conversão automática entre Litros e Barris (BBL).</li>
+                    <li>Histórico de cálculos realizados no sistema.</li>
+                    <li>Interface responsiva otimizada para dispositivos móveis.</li>
+                </ul>
+            </div>
 
-            <h3>Desenvolvimento</h3>
-            <p>Este sistema foi desenvolvido com foco na praticidade e precisão, atendendo às necessidades específicas
-                da indústria petrolífera. Utiliza padrões modernos de desenvolvimento web e segue as melhores práticas
-                de responsividade e usabilidade.</p>
-        </div>
-    </div>
+            <div style="margin-top: 40px;">
+                <h3><i class="fas fa-code"></i> Tecnologias Utilizadas</h3>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div class="glass" style="padding: 15px; text-align: center;">
+                        <i class="fab fa-html5" style="font-size: 2rem; color: #e34c26;"></i>
+                        <p style="margin-top: 10px;">HTML5</p>
+                    </div>
+                    <div class="glass" style="padding: 15px; text-align: center;">
+                        <i class="fab fa-css3-alt" style="font-size: 2rem; color: #264de4;"></i>
+                        <p style="margin-top: 10px;">CSS3</p>
+                    </div>
+                    <div class="glass" style="padding: 15px; text-align: center;">
+                        <i class="fab fa-js" style="font-size: 2rem; color: #f7df1e;"></i>
+                        <p style="margin-top: 10px;">JavaScript</p>
+                    </div>
+                    <div class="glass" style="padding: 15px; text-align: center;">
+                        <i class="fab fa-font-awesome" style="font-size: 2rem; color: #337ab7;"></i>
+                        <p style="margin-top: 10px;">Font Awesome</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <h3><i class="fas fa-laptop-code"></i> Desenvolvimento</h3>
+                <p>O CalcVol foi projetado com foco na praticidade e precisão, atendendo às necessidades específicas
+                    da indústria petrolífera através de padrões modernos de UX/UI.</p>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-container">
             <div class="footer-section">
                 <h3>Sobre a CalcVol</h3>
-                <p>Ferramenta criada para cálculo de volume em tubulações na indústria petrolífera.</p>
+                <p>Ferramenta premium especializada para cálculo de volume em tubulações na indústria petrolífera,
+                    focada em precisão e agilidade.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://meusprojeto.netlify.app/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
 
             <div class="footer-section">
-                <h3>Links Úteis</h3>
+                <h3>Links Rápidos</h3>
                 <ul class="footer-links">
                     <li><a href="./index.html">Início</a></li>
-                    <li><a href="./sobre.html">Sobre</a></li>
-                    <li><a href="./contato.html">Contato</a></li>
-                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="./sobre.html">Sobre o Projeto</a></li>
+                    <li><a href="./contato.html">Fale Conosco</a></li>
+                    <li><a href="#">Privacidade</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
-                <h3>Contato</h3>
-                <p><i class="fas fa-envelope"></i> contato@calcvol.com</p>
-                <p><i class="fas fa-phone"></i> (00) 12345-6789</p>
-                <p><i class="fas fa-map-marker-alt"></i> Alagoas - Brasil</p>
+                <h3>Localização</h3>
+                <p><i class="fas fa-envelope"></i> IVONILDODEV@GMAIL.COM </p>
+                <p><i class="fas fa-phone"></i> (82) 99999-9999</p>
+                <p><i class="fas fa-map-marker-alt"></i> Alagoas, Brasil</p>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 CalcVol | Desenvolvido por Ivonildo Lima</p>
+            <p>&copy; 2025 CalcVol | Criado por Ivonildo Lima</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Hamburger Menu Logic
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>
