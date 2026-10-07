@@ -1,70 +1,85 @@
-function calcular() {
-    const distancia = parseFloat(document.getElementById('distancia').value);
-    const opcao = document.getElementById('opcao').value;
-    const resultadoElement = document.getElementById('resultado');
+const CAPACIDADES = {
+    '1': { litrosPorMetro: 2.019, nome: 'Tubo 2 3/8"' },
+    '2': { litrosPorMetro: 3.020, nome: 'Tubo 2 7/8"' },
+    '3': { litrosPorMetro: 4.531, nome: 'Tubo 3 1/2"' }
+};
+const LITROS_POR_BARRIL = 159;
 
-    // Validação dos campos
-    if (!distancia || isNaN(distancia)) {
-        alert('Por favor, digite uma distância válida em metros!');
-        return;
-    }
+const el = {
+    distancia: document.getElementById('distancia'),
+    opcao: document.getElementById('opcao'),
+    campoDistancia: document.getElementById('campoDistancia'),
+    campoTubo: document.getElementById('campoTubo'),
+    erroDistancia: document.getElementById('erroDistancia'),
+    erroTubo: document.getElementById('erroTubo'),
+    resumo: document.getElementById('resumo'),
+    litros: document.getElementById('valLitros'),
+    barris: document.getElementById('valBarris'),
+    linhas: document.querySelectorAll('#tabelaTubos tbody tr')
+};
 
-    if (!opcao) {
-        alert('Por favor, selecione um diâmetro de tubo!');
-        return;
-    }
+const fmt = (n, casas) => n.toLocaleString('pt-BR', {
+    minimumFractionDigits: casas,
+    maximumFractionDigits: casas
+});
 
-    let constante;
-    let tuboNome;
-
-    // Definir a constante baseada na opção
-    switch (opcao) {
-        case '1':
-            constante = 2.019;
-            tuboNome = 'Tubo 2 3/8"';
-            break;
-        case '2':
-            constante = 3.020;
-            tuboNome = 'Tubo 2 7/8"';
-            break;
-        case '3':
-            constante = 4.531;
-            tuboNome = 'Tubo 3 1/2"';
-            break;
-        default:
-            alert("Opção inválida");
-            return;
-    }
-
-    // Calcular o resultado em litros
-    const resultadoLitros = (distancia * constante).toFixed();
-
-    // Calcular o resultado em barris
-    const resultadoBarris = (resultadoLitros / 159).toFixed(2);
-
-    // Mostrar resultado com nova estilização
-    resultadoElement.style.display = 'block';
-    resultadoElement.innerHTML = `
-        <div class="result-card">
-            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 10px;">Resultado para ${tuboNome} (${distancia}m)</p>
-            <div class="result-value"><i class="fas fa-tint"></i> ${resultadoLitros} Litros</div>
-            <div class="result-value"><i class="fas fa-oil-can"></i> ${resultadoBarris} BBL</div>
-        </div>
-    `;
-
-    // Limpar campos após o cálculo (opcional - mantendo como solicitado anteriormente)
-    // document.getElementById('distancia').value = '';
-    // document.getElementById('opcao').value = '';
+function marcarErro(campo, msgEl, msg) {
+    campo.classList.toggle('invalid', Boolean(msg));
+    msgEl.textContent = msg || '';
 }
 
-document.getElementById('btnLimparHistorico').addEventListener('click', function () {
-    const resultadoElement = document.getElementById('resultado');
-    
-    // Limpar campos
-    document.getElementById('distancia').value = '';
-    document.getElementById('opcao').value = '';
+function destacarLinha(opcao) {
+    el.linhas.forEach(tr => tr.classList.toggle('on', tr.dataset.tubo === opcao));
+}
 
-    // Limpar o resultado e esconder container
-    resultadoElement.innerHTML = '';
-    resultadoElement.style.display = 'none';
+function mostrarValor(elemento, texto) {
+    elemento.textContent = texto;
+    elemento.classList.remove('empty', 'fresh');
+    void elemento.offsetWidth; // reinicia a animação
+    elemento.classList.add('fresh');
+}
+
+function calcular() {
+    const distancia = parseFloat(el.distancia.value);
+    const opcao = el.opcao.value;
+
+    const distanciaOk = Number.isFinite(distancia) && distancia > 0;
+    marcarErro(el.campoDistancia, el.erroDistancia,
+        distanciaOk ? '' : 'Digite a profundidade em metros, maior que zero.');
+    marcarErro(el.campoTubo, el.erroTubo,
+        opcao ? '' : 'Selecione o diâmetro do tubo.');
+
+    if (!distanciaOk) { el.distancia.focus(); return; }
+    if (!opcao) { el.opcao.focus(); return; }
+
+    const tubo = CAPACIDADES[opcao];
+    const litros = Math.round(distancia * tubo.litrosPorMetro);
+    const barris = litros / LITROS_POR_BARRIL;
+
+    destacarLinha(opcao);
+    el.resumo.textContent = `${tubo.nome} · ${fmt(distancia, distancia % 1 ? 2 : 0)} m`;
+    mostrarValor(el.litros, fmt(litros, 0));
+    mostrarValor(el.barris, fmt(barris, 2));
+}
+
+function limpar() {
+    el.distancia.value = '';
+    el.opcao.value = '';
+    marcarErro(el.campoDistancia, el.erroDistancia, '');
+    marcarErro(el.campoTubo, el.erroTubo, '');
+    destacarLinha('');
+    el.resumo.textContent = 'Aguardando dados';
+    [el.litros, el.barris].forEach(v => {
+        v.textContent = '––';
+        v.classList.add('empty');
+        v.classList.remove('fresh');
+    });
+    el.distancia.focus();
+}
+
+document.getElementById('formCalc').addEventListener('submit', e => {
+    e.preventDefault();
+    calcular();
 });
+document.getElementById('btnLimparHistorico').addEventListener('click', limpar);
+el.opcao.addEventListener('change', () => destacarLinha(el.opcao.value));

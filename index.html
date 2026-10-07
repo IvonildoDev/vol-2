@@ -5,111 +5,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Volume | CalcVol</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Ferramenta especializada para cálculo preciso de volume em tubulações de poços de petróleo. Rápida, confiável e fácil de usar.">
+    <meta name="theme-color" content="#0b111d">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="bg-circles">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-    </div>
+    <header class="site-header">
+        <nav class="nav-menu wrap" aria-label="Principal">
+            <a href="./index.html" class="logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v18M15 3v18M9 7h-3M9 12h-3M9 17h-3"/></svg>
+                <span>Calc<b>Vol</b></span>
+            </a>
+            <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+            <ul>
+                <li><a href="./index.html" class="active" aria-current="page">Início</a></li>
+                <li><a href="./sobre.html">Sobre</a></li>
+                <li><a href="./contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <nav class="nav-menu">
-        <a href="./index.html" class="logo">
-            <i class="fas fa-oil-well"></i>
-            <span>CalcVol</span>
-        </a>
-        <button class="hamburger">
-            <i class="fas fa-bars"></i>
-        </button>
-        <ul>
-            <li><a href="./index.html" class="active"><i class="fas fa-home"></i> Início</a></li>
-            <li><a href="./sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
-            <li><a href="./contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
-        </ul>
-    </nav>
+    <section class="banner">
+        <img src="img/campo.webp" srcset="img/campo-800.webp 800w, img/campo.webp 1376w" sizes="100vw" alt="Campo petrolífero ao pôr do sol, com cavalos de bombeio e uma sonda ao fundo" width="1376" height="768" fetchpriority="high">
+        <div class="banner-text wrap">
+            <h1>Volume de tubulação</h1>
+            <p>Informe a profundidade e o diâmetro do tubo. O volume sai em litros e em barris.</p>
+        </div>
+    </section>
 
-    <main class="container glass">
-        <section class="calculator-section">
-            <h1><i class="fas fa-calculator"></i> Calculadora de Volume</h1>
+    <main class="wrap main-pull">
+        <section class="calc" aria-label="Calculadora de volume">
+            <form class="calc-form" id="formCalc" novalidate>
+                <div class="field" id="campoDistancia">
+                    <label for="distancia">Profundidade <small>metros</small></label>
+                    <input type="number" id="distancia" inputmode="decimal" placeholder="Ex.: 100,50" step="0.01" min="0" autocomplete="off" aria-describedby="erroDistancia">
+                    <p class="field-error" id="erroDistancia" role="alert"></p>
+                </div>
 
-            <div class="input-group">
-                <label for="distancia">
-                    <i class="fas fa-ruler"></i> Distância ou Profundidade (Metros):
-                </label>
-                <input type="number" id="distancia" placeholder="Ex: 100.50" step="0.01" min="0">
-            </div>
+                <div class="field" id="campoTubo">
+                    <label for="opcao">Diâmetro do tubo</label>
+                    <select id="opcao" aria-describedby="erroTubo">
+                        <option value="">Selecione</option>
+                        <option value="1">Tubo 2 3/8"</option>
+                        <option value="2">Tubo 2 7/8"</option>
+                        <option value="3">Tubo 3 1/2"</option>
+                    </select>
+                    <p class="field-error" id="erroTubo" role="alert"></p>
+                </div>
 
-            <div class="input-group">
-                <label for="opcao">
-                    <i class="fas fa-oil-can"></i> Escolha o Tubo:
-                </label>
-                <select id="opcao">
-                    <option value="">Selecione o diâmetro do tubo</option>
-                    <option value="1">Tubo (2 3/8")</option>
-                    <option value="2">Tubo (2 7/8")</option>
-                    <option value="3">Tubo (3 1/2")</option>
-                </select>
-            </div>
+                <div class="actions">
+                    <button type="submit" class="btn btn-primary" id="btnCalcular">Calcular volume</button>
+                    <button type="button" class="btn btn-ghost" id="btnLimparHistorico">Limpar</button>
+                </div>
+            </form>
 
-            <div class="button-group">
-                <button onclick="calcular()" class="btn-calcular">
-                    <i class="fas fa-bolt"></i> Calcular Agora
-                </button>
-                <button id="btnLimparHistorico" class="btn-limpar">
-                    <i class="fas fa-trash-alt"></i> Limpar
-                </button>
-            </div>
-
-            <div class="result-section" id="resultado" style="display: none;"></div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Sobre a CalcVol</h3>
-                <p>Ferramenta premium especializada para cálculo de volume em tubulações na indústria petrolífera,
-                    focada em precisão e agilidade.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="https://meusprojeto.netlify.app/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="readout" id="resultado" aria-live="polite">
+                <div class="readout-head" id="resumo">Aguardando dados</div>
+                <div class="reading">
+                    <div class="reading-unit">Litros<small>L</small></div>
+                    <div class="reading-value empty" id="valLitros">&ndash;&ndash;</div>
+                </div>
+                <div class="reading">
+                    <div class="reading-unit">Barris<small>BBL · 159 L</small></div>
+                    <div class="reading-value empty" id="valBarris">&ndash;&ndash;</div>
                 </div>
             </div>
+        </section>
 
-            <div class="footer-section">
-                <h3>Links Rápidos</h3>
-                <ul class="footer-links">
+        <div class="below">
+            <div>
+                <h2>Como o cálculo é feito</h2>
+                <p>Volume em litros é a profundidade multiplicada pela capacidade do tubo por metro. Os barris saem da divisão por 159.</p>
+                <p>Os dados partem do pressuposto de que a tubulação está vazia. Valores reais podem variar.</p>
+            </div>
+
+            <table class="spec-table" id="tabelaTubos">
+                <caption>Capacidade por metro</caption>
+                <thead>
+                    <tr><th scope="col">Tubo</th><th scope="col">Litros / metro</th></tr>
+                </thead>
+                <tbody>
+                    <tr data-tubo="1"><th scope="row">2 3/8"</th><td>2,019</td></tr>
+                    <tr data-tubo="2"><th scope="row">2 7/8"</th><td>3,020</td></tr>
+                    <tr data-tubo="3"><th scope="row">3 1/2"</th><td>4,531</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-grid wrap">
+            <div class="footer-brand">
+                <h3>CalcVol</h3>
+                <p>Ferramenta especializada para cálculo de volume em tubulações na indústria petrolífera, focada em precisão e agilidade.</p>
+            </div>
+
+            <div>
+                <h3>Páginas</h3>
+                <ul>
                     <li><a href="./index.html">Início</a></li>
-                    <li><a href="./sobre.html">Sobre o Projeto</a></li>
-                    <li><a href="./contato.html">Fale Conosco</a></li>
-                    <li><a href="#">Privacidade</a></li>
+                    <li><a href="./sobre.html">Sobre o projeto</a></li>
+                    <li><a href="./contato.html">Fale conosco</a></li>
+                    <li><a href="https://meusprojeto.netlify.app/" target="_blank" rel="noopener">Portfólio do autor</a></li>
                 </ul>
             </div>
 
-            <div class="footer-section">
-                <h3>Localização</h3>
-                <p><i class="fas fa-envelope"></i> IVONILDODEV@GMAIL.COM </p>
-                <p><i class="fas fa-phone"></i> (82) 99999-9999</p>
-                <p><i class="fas fa-map-marker-alt"></i> Alagoas, Brasil</p>
+            <div>
+                <h3>Contato</h3>
+                <ul class="footer-contact">
+                    <li><a href="mailto:ivonildodev@gmail.com">ivonildodev@gmail.com</a></li>
+                </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 CalcVol | Criado por Ivonildo Lima</p>
+            <div class="wrap">© 2025 CalcVol · Criado por Ivonildo Lima</div>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
-        // Hamburger Menu Logic
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            const aberto = navMenu.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', aberto);
         });
     </script>
 </body>

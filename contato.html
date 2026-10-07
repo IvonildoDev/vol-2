@@ -5,110 +5,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato | CalcVol</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="theme-color" content="#0b111d">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="bg-circles">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-    </div>
+    <header class="site-header">
+        <nav class="nav-menu wrap" aria-label="Principal">
+            <a href="./index.html" class="logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v18M15 3v18M9 7h-3M9 12h-3M9 17h-3"/></svg>
+                <span>Calc<b>Vol</b></span>
+            </a>
+            <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+            <ul>
+                <li><a href="./index.html">Início</a></li>
+                <li><a href="./sobre.html">Sobre</a></li>
+                <li><a href="./contato.html" class="active" aria-current="page">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <nav class="nav-menu">
-        <a href="./index.html" class="logo">
-            <i class="fas fa-oil-well"></i>
-            <span>CalcVol</span>
-        </a>
-        <button class="hamburger">
-            <i class="fas fa-bars"></i>
-        </button>
-        <ul>
-            <li><a href="./index.html"><i class="fas fa-home"></i> Início</a></li>
-            <li><a href="./sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
-            <li><a href="./contato.html" class="active"><i class="fas fa-envelope"></i> Contato</a></li>
-        </ul>
-    </nav>
+    <main class="wrap">
+        <section class="prose">
+            <h1>Contato</h1>
+            <p>Dúvida ou sugestão? Escreva para a gente.</p>
 
-    <main class="container glass">
-        <h1><i class="fas fa-paper-plane"></i> Entre em Contato</h1>
-        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px;">Tem alguma dúvida ou sugestão?
-            Envie uma mensagem para nossa equipe.</p>
-
-        <section class="contact-form">
-            <form id="formContato">
-                <div class="input-group">
-                    <label for="nome"><i class="fas fa-user"></i> Nome Completo:</label>
-                    <input type="text" id="nome" name="nome" placeholder="Seu nome aqui" required>
+            <form class="contact-form" id="formContato">
+                <div class="field">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" name="nome" autocomplete="name" required>
                 </div>
 
-                <div class="input-group">
-                    <label for="email"><i class="fas fa-envelope"></i> E-mail Corporativo:</label>
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                <div class="field">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="voce@empresa.com" autocomplete="email" required>
                 </div>
 
-                <div class="input-group">
-                    <label for="mensagem"><i class="fas fa-comment-dots"></i> Sua Mensagem:</label>
-                    <textarea id="mensagem" name="mensagem" rows="5" placeholder="Como podemos ajudar?"
-                        required></textarea>
+                <div class="field">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
                 </div>
 
-                <button type="submit" class="btn-calcular">
-                    <i class="fas fa-paper-plane"></i> Enviar Mensagem
-                </button>
+                <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+                <p class="form-status" id="statusForm" role="status"></p>
             </form>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Sobre a CalcVol</h3>
-                <p>Ferramenta premium especializada para cálculo de volume em tubulações na indústria petrolífera,
-                    focada em precisão e agilidade.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="https://meusprojeto.netlify.app/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+    <footer class="site-footer">
+        <div class="footer-grid wrap">
+            <div class="footer-brand">
+                <h3>CalcVol</h3>
+                <p>Ferramenta especializada para cálculo de volume em tubulações na indústria petrolífera, focada em precisão e agilidade.</p>
             </div>
 
-            <div class="footer-section">
-                <h3>Links Rápidos</h3>
-                <ul class="footer-links">
+            <div>
+                <h3>Páginas</h3>
+                <ul>
                     <li><a href="./index.html">Início</a></li>
-                    <li><a href="./sobre.html">Sobre o Projeto</a></li>
-                    <li><a href="./contato.html">Fale Conosco</a></li>
-                    <li><a href="#">Privacidade</a></li>
+                    <li><a href="./sobre.html">Sobre o projeto</a></li>
+                    <li><a href="./contato.html">Fale conosco</a></li>
+                    <li><a href="https://meusprojeto.netlify.app/" target="_blank" rel="noopener">Portfólio do autor</a></li>
                 </ul>
             </div>
 
-            <div class="footer-section">
-                <h3>Localização</h3>
-                <p><i class="fas fa-envelope"></i> IVONILDODEV@GMAIL.COM </p>
-                <p><i class="fas fa-phone"></i> (82) 99999-9999</p>
-                <p><i class="fas fa-map-marker-alt"></i> Alagoas, Brasil</p>
+            <div>
+                <h3>Contato</h3>
+                <ul class="footer-contact">
+                    <li><a href="mailto:ivonildodev@gmail.com">ivonildodev@gmail.com</a></li>
+                </ul>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2025 CalcVol | Criado por Ivonildo Lima</p>
+            <div class="wrap">© 2025 CalcVol · Criado por Ivonildo Lima</div>
         </div>
     </footer>
 
     <script>
-        // Hamburger Menu Logic
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            const aberto = navMenu.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', aberto);
         });
 
-        // Form Submit Logic (Simple feedback)
         document.getElementById('formContato').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Obrigado por sua mensagem! Entraremos em contato em breve.');
-            e.target.reset();
+            const f = e.target;
+            const corpo = `${f.mensagem.value}
+
+${f.nome.value} <${f.email.value}>`;
+            window.location.href = 'mailto:ivonildodev@gmail.com?subject=' +
+                encodeURIComponent('Contato pelo CalcVol') + '&body=' + encodeURIComponent(corpo);
+            const status = document.getElementById('statusForm');
+            status.textContent = 'Abrimos seu aplicativo de e-mail. Se nada abrir, escreva para ivonildodev@gmail.com.';
+            status.classList.add('ok');
         });
     </script>
 </body>
